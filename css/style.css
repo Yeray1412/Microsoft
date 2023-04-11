@@ -1,0 +1,348 @@
+:root {
+    --blue:#0067b8;
+    --white: #fff;
+    --black: #000;
+    --light-black: #171717;
+}
+
+body {
+    height: 4000px;
+}
+
+/* Global */
+
+nav {
+    background-color: var(--white);
+    height: 54px;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+nav .container .lhs {
+    display: flex;
+    align-items: center;
+}
+
+nav .container .lhs ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+nav .container .lhs ul li a {
+    color: var(--black);
+    text-decoration: none;
+    padding: 16px 8px 10px;
+    font-size: 13px;
+    position: relative;
+}
+
+nav .container .lhs ul li a::after {
+    content: "";
+    width: calc(100% - 16px);
+    height: 2px;
+    background-color: var(--black);
+    position: absolute;
+    bottom: 5px;
+    left: 8px;
+    display: none;
+}
+
+nav .rhs .drop-down::after {
+    content: "";
+    width: calc(100% - 16px);
+    height: 2px;
+    background-color: var(--black);
+    position: absolute;
+    bottom: 12px;
+    left: 8px;
+    display: none;
+}
+
+nav .container .lhs ul li a:hover::after,
+nav .rhs .drop-down:hover::after {
+    display: block;
+}
+
+nav .container .lhs ul li a:focus {
+    border: 1px dashed #171717;
+}
+
+nav .logo {
+    width: 110px;
+    display: flex;
+    height: 100%;
+}
+
+nav .rhs {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+nav .rhs .drop-down {
+    font-size: 13px;
+    position: relative;
+    padding: 16px 8px 10px;
+    height: 100%;
+}
+
+nav .rhs .drop-down span svg{
+    width: 9px;
+}
+
+nav .rhs .profile {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav .rhs .profile svg {
+    height: 32px;
+    width: 32px;
+
+}
+
+nav .rhs .searsh-bar .icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(112, 112, 112);
+}
+
+nav .rhs .searsh-bar .icon {
+    transform: rotate(90deg);
+}
+
+
+nav .rhs .icon:active,
+nav .rhs .icon:focus,
+nav .rhs .profile:active,
+nav .rhs .profile:focus {
+    border: 1px dashed #171717;
+}
+
+nav .rhs .drop-down:active,
+nav .rhs .drop-down:focus {
+    border: 1px dashed #171717;
+    border-bottom: none;
+}
+
+.searsh-bar {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 8px;
+}
+
+/* slider */
+
+header .swiper {
+    height: calc(100vh - 54px);
+    overflow: hidden;
+}
+
+header .swiper-wrapper {
+    height: 100%;
+    width: 400%;
+    position: relative;
+    display: flex;
+    transform: translateX(0);
+}
+
+header .swiper-slide:first-child {
+    background-image: url(../img/Highlight-M365-Icon-Bounce-Word-Merch_VP4-1399x600.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+header .swiper-slide:nth-child(2) {
+    background-image: url(../img/Highlight-Multi-Canvas-Bing-AI-No-Text_VP4-1399x600.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+header .swiper-slide:nth-child(3) {
+    background-image: url(../img/Highlight-M365-Icon-Bounce-Word-Merch_VP4-1399x600.avif);
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+header .swiper-slide:last-child {
+    background-image: url(../img/Highlight-Multi-Canvas-Bing-AI-No-Text_VP4-1399x600.jpg);
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+
+
+header .swiper-slide .container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+header .swiper-slide .container .main {
+    width: 400px;
+    transition: 0.3s;
+}
+
+header .swiper-slide .container .main button {
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    margin: 8px 0;
+    border-radius: 2px;
+    font-weight: bold;
+    box-shadow: 0 0.1875rem 0.4375rem 0 rgba(0,0,0,.13), 0 0.0625rem 0.125rem 0 rgba(0,0,0,.11);
+    padding: 5px
+}
+
+header .swiper-slide .container .main button span {
+    display: block;
+    padding: 4px 6px;
+}
+
+
+header .swiper-slide .container .main button:hover {
+    background-color: #025392;
+}
+
+header .swiper-slide .container .main button:active > span,
+header .swiper-slide .container .main button:focus > span {
+    outline: 3px dotted var(--white);
+}
+
+header .swiper-slide .container .main .button-con {
+    display: flex;
+    width: 315px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .swiper-slide .container .main .button-con div {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    width: 185px;
+    justify-content: space-between;
+    margin-left: 10px;
+    padding: 10px;
+}
+header .swiper-slide .container .main .button-con div:active,
+header .swiper-slide .container .main .button-con div:focus {
+    outline: 3px dotted var(--light-black)
+}
+
+
+header .swiper-slide .container .main .button-con div:hover {
+    text-decoration: underline;
+}
+
+header .swiper-slide .container .main .button-con div span {
+    transition: 0.3s;
+}
+
+header .swiper-slide .container .main .button-con div:hover > span {
+    transform: translateX(5px);
+}
+
+header .swiper-slide .container .main .text h1 {
+    font-size: 29px;
+}
+
+header .swiper-slide:last-child .container .main,
+header .swiper-slide:nth-child(2) .container .main {
+    color: var(--white);
+}
+
+header .swiper-slide:first .container .main,
+header .swiper-slide:nth-child(3) .container .main {
+    color: var(--light-black);
+}
+
+header .swiper-slide:nth-child(3) .container .main .text,
+header .swiper-slide:first-child .container .main .text {
+    width: 335px;
+}
+
+header .tools-con {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+header .tools-con .swiper-button-prev,
+header .tools-con .swiper-button-next {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .tools-con .swiper-button-prev:active,
+header .tools-con .swiper-button-next:active,
+header .tools-con .swiper-button-prev:focus,
+header .tools-con .swiper-button-next:focus {
+    border: 3px dotted var(--black);
+}
+
+header .tools-con .swiper-button-prev svg, 
+header .tools-con .swiper-button-next svg {
+    width: 20px;
+    height: 20px;
+    transition: 0.2s;
+}
+
+header .tools-con .swiper-pagination {
+    display: flex;
+    width: 100px;
+    justify-content: space-around;
+}
+
+header .tools-con .swiper-button-prev:hover > svg {
+    transform: translateX(-8px);
+}
+header .tools-con .swiper-button-next:hover > svg {
+    transform: translateX(8px);
+}
+
+header .tools-con .swiper-pagination span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--black);
+    background-color: white;
+    display: block;
+}
+
+header .tools-con .swiper-pagination span.active {
+    background-color: var(--black);
+} 
