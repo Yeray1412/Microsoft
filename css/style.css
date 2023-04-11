@@ -220,7 +220,7 @@ header .swiper-slide .container .main button {
     border: none;
     margin: 8px 0;
     border-radius: 2px;
-    font-weight: bold;
+    font-weight: 600;
     box-shadow: 0 0.1875rem 0.4375rem 0 rgba(0,0,0,.13), 0 0.0625rem 0.125rem 0 rgba(0,0,0,.11);
     padding: 5px
 }
@@ -248,7 +248,7 @@ header .swiper-slide .container .main .button-con {
 }
 
 header .swiper-slide .container .main .button-con div {
-    font-weight: bold;
+    font-weight: 600;
     display: flex;
     align-items: center;
     width: 185px;
@@ -378,14 +378,19 @@ header .pause-start-icon svg:focus {
 
 /* main sec */
 
-/* first-sub */
+/* first-sub and third*/
 .main-sec {
     margin-top: 100px;
 }
 
 .main-sec .first-subsec .col .text h3,
 .main-sec .third-subsec .col .text h3 {
-    font-size: 24px;
+    font-size: 22px;
+}
+
+.main-sec .first-subsec .col .text p,
+.main-sec .third-subsec .col .text p {
+    font-size: 15px;
 }
 
 .main-sec .first-subsec .col .text,
@@ -397,7 +402,7 @@ header .pause-start-icon svg:focus {
 .main-sec .third-subsec .col .link {
     padding-top: 10px;
     color: var(--blue);
-    font-weight: bold;
+    font-weight: 600;
     font-size: 15px;
 }
 
@@ -417,7 +422,7 @@ header .pause-start-icon svg:focus {
 .main-sec .third-subsec .col .link:hover {
     text-decoration: underline;
 }
-/* first-sub end */
+/* first-sub and third end */
 
 /* second sub-sec */
 
@@ -452,7 +457,7 @@ header .pause-start-icon svg:focus {
     border: none;
     margin: 8px 0;
     border-radius: 2px;
-    font-weight: bold;
+    font-weight: 600;
     box-shadow: 0 0.1875rem 0.4375rem 0 rgba(0,0,0,.13), 0 0.0625rem 0.125rem 0 rgba(0,0,0,.11);
     padding: 10px
 }
