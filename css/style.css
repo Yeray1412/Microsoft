@@ -316,8 +316,8 @@ header .tools-con .swiper-button-next:focus {
 
 header .tools-con .swiper-button-prev svg, 
 header .tools-con .swiper-button-next svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     transition: 0.2s;
 }
 
@@ -339,10 +339,35 @@ header .tools-con .swiper-pagination span {
     height: 10px;
     border-radius: 50%;
     border: 1px solid var(--black);
-    background-color: white;
+    background-color: var(--white);
     display: block;
 }
 
 header .tools-con .swiper-pagination span.active {
     background-color: var(--black);
 } 
+
+header .pause-start-icon {
+    display: flex;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+}
+
+header .pause-start-icon svg {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid black;
+    padding: 4px;
+}
+
+header .pause-start-icon svg:hover,
+header .pause-start-icon svg:active,
+header .pause-start-icon svg:focus {
+    color: var(--white);
+    background-color: var(--black);
+    border: 1px solid var(--white);
+}
+

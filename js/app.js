@@ -1,3 +1,4 @@
+// Loop swiper
 const prevButton = document.querySelector('.swiper-button-prev')
 const nextButton = document.querySelector('.swiper-button-next')
 const wrapper = document.querySelector('.swiper-wrapper')
@@ -5,14 +6,18 @@ const swipeCon = document.querySelector('.swiper')
 const toolsCon = document.querySelector('.tools-con')
 const slide = document.querySelectorAll('.swiper-pagination span')
 const mainText = document.querySelectorAll('.swiper-wrapper .main')
+const pauseStartIcon = document.querySelector('.pause-start-icon');
+let svgs = document.querySelectorAll('.pause-start-icon svg');
+let pause = document.querySelectorAll('.pause-start-icon svg')[0]
+let play = document.querySelectorAll('.pause-start-icon svg')[1]
 const styleObj = {
   sl1: 'translateX(-1349px)',
   sl2: 'translateX(-2698px)'
 }
 let swiperSlide = document.querySelectorAll('.swiper-slide');
 let index = 1;
-const firstClone = swiperSlide[0].cloneNode(true)
-const secondClone = swiperSlide[1].cloneNode(true)
+const firstClone = swiperSlide[0].cloneNode(true);
+const secondClone = swiperSlide[1].cloneNode(true);
 
 firstClone.id = 'first-clone'
 secondClone.id = 'second-clone'
@@ -27,8 +32,7 @@ wrapper.style.transform = `translateX(${-slideWidth * index}px)`
 function autoSlide() {
   interval = setInterval(()=> {
     toNext()
-    console.log(index)
-  }, 8000)
+  }, 5000)
 }
 
 wrapper.addEventListener('transitionend',()=> {
@@ -66,8 +70,6 @@ function toNext() {
       }
       slide[1].classList.add('active');
     }
-    console.log(index)
-    console.log(-slideWidth * index)
 }
 
 function toPrev() {
@@ -98,17 +100,24 @@ swipeCon.addEventListener('mouseenter',()=> {
   clearInterval(interval)
 })
 
-swipeCon.addEventListener('mouseleave',()=> {
-  autoSlide();
-})
-
 toolsCon.addEventListener('mouseenter',()=> {
   clearInterval(interval)
 })
 
-toolsCon.addEventListener('mouseleave',()=> {
-  autoSlide();
-})
+
+  toolsCon.addEventListener('mouseleave',()=> {
+    play = document.querySelectorAll('.pause-start-icon svg')[1]
+    if( play.classList.contains('d-none') )  {
+      autoSlide();
+    }
+  })
+  
+  swipeCon.addEventListener('mouseleave',()=> {
+    play = document.querySelectorAll('.pause-start-icon svg')[1]
+    if(play.classList.contains('d-none'))  {
+      autoSlide();
+    }
+  })
 // Move Out and leave events
 
 nextButton.addEventListener('click',()=> {
@@ -119,75 +128,9 @@ prevButton.addEventListener('click',()=> {
   toPrev()
 })
 
-
 autoSlide();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// nextButton.addEventListener('click',()=> {
-//   if(wrapper.style.transform == slideLocation.slide1) {
-//     wrapper.style.transform = slideLocation.slide2
-//     for(let i = 0; i < slide.length; i++) {
-//       slide[i].classList.remove('active')
-//       mainText[i].style.opacity = '1'
-//     }
-//     slide[1].classList.add('active');
-//     mainText[0].style.opacity = '0'
-//   }
-// });
-
-// prevButton.addEventListener('click',()=> {
-//   if(wrapper.style.transform == slideLocation.slide2) {
-//     wrapper.style.transform = slideLocation.slide1
-//     for(let i = 0; i < slide.length; i++) {
-//       slide[i].classList.remove('active')
-//       mainText[i].style.opacity = '1'
-//     }
-//     slide[0].classList.add('active');
-//     mainText[1].style.opacity = '0';
-//   }
-// });
+// click event for the bullets
 
 for(let i = 0;i < slide.length; i++) {
   slide[i].addEventListener('click',()=> {
@@ -199,3 +142,25 @@ for(let i = 0;i < slide.length; i++) {
     wrapper.style.transform = Object.values(styleObj)[i];
   })
 }
+
+pauseStartIcon.addEventListener('click',()=> {
+  let svgs = document.querySelectorAll('.pause-start-icon svg');
+  let pause = document.querySelectorAll('.pause-start-icon svg')[0]
+  let play = document.querySelectorAll('.pause-start-icon svg')[1]
+  
+  if(play.classList.contains('d-none')) {
+    svgs.forEach((e)=> {
+      e.classList.remove('d-none')
+    })
+    pause.classList.add('d-none');
+    clearInterval(interval)
+  } else {
+    svgs.forEach((e)=> {
+      e.classList.remove('d-none')
+    })
+    play.classList.add('d-none');
+    autoSlide();
+  }
+})
+
+// End loop swiper
