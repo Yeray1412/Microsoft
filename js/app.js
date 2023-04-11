@@ -164,3 +164,30 @@ pauseStartIcon.addEventListener('click',()=> {
 })
 
 // End loop swiper
+
+
+// back to top
+const backToTop = document.querySelector('.back-to-top button'); 
+
+backToTop.addEventListener('click', ()=> {
+  scrollTo({
+    top: 0,
+    behavior: "smooth"
+  })
+});
+
+window.addEventListener('scroll',()=> {
+  if(scrollY <= 1880) {
+    backToTop.classList.add('active')
+  } else {
+    backToTop.classList.remove('active')
+  }
+
+  if(scrollY <= 446) {
+    backToTop.style.opacity = '0'
+  } else {
+    backToTop.style.opacity = '1'
+  }
+})
+
+// back to top end
