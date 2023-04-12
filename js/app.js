@@ -191,3 +191,35 @@ window.addEventListener('scroll',()=> {
 })
 
 // back to top end
+
+//searsh bar 
+const searshIcon = document.querySelector('.searsh-bar .icon');
+const searshText = document.querySelector('.searsh-bar input');
+const searshCancel = document.querySelector('.searsh-bar .cancel');
+const searshBar = document.querySelector('.searsh-bar');
+const rhs = document.querySelector('.rhs');
+const lhs = document.querySelector('.lhs');
+
+searshIcon.addEventListener('click',()=> {
+  searshText.classList.add('active');
+  rhs.classList.add('active');
+  searshIcon.classList.add('active');
+  searshCancel.classList.remove('d-none')
+  rhs.children[0].classList.add('d-none')
+  rhs.children[2].classList.add('d-none')
+  lhs.children[1].classList.add('d-lg-none')
+  searshBar.style.width = '100%'
+});
+
+searshCancel.addEventListener('click',()=> {
+    searshText.classList.remove('active');
+    rhs.classList.remove('active');
+    searshIcon.classList.remove('active');
+    searshCancel.classList.add('d-none')
+    rhs.children[0].classList.remove('d-none')
+    rhs.children[2].classList.remove('d-none')
+    lhs.children[1].classList.remove('d-lg-none')
+    searshBar.style.width = ''
+});
+
+//searsh bar end
