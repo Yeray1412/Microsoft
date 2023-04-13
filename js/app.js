@@ -5,7 +5,7 @@ const wrapper = document.querySelector('.swiper-wrapper')
 const swipeCon = document.querySelector('.swiper')
 const toolsCon = document.querySelector('.tools-con')
 const slide = document.querySelectorAll('.swiper-pagination span')
-const mainText = document.querySelectorAll('.swiper-wrapper .main')
+let mainText = document.querySelectorAll('.swiper-wrapper .main')
 const pauseStartIcon = document.querySelector('.pause-start-icon');
 let svgs = document.querySelectorAll('.pause-start-icon svg');
 let pause = document.querySelectorAll('.pause-start-icon svg')[0]
@@ -53,12 +53,21 @@ wrapper.addEventListener('transitionend',()=> {
 
 function toNext() {
   swiperSlide = document.querySelectorAll('.swiper-slide');
+  mainText = document.querySelectorAll('.swiper-wrapper .main')
   if(index >= swiperSlide.length - 1) return;
     index++;
     wrapper.style.transitionDuration = '1s'
     wrapper.style.transform = `translateX(${-slideWidth * index}px)`
-    //styling the bullets
     if(index % 2 != 0) {
+      console.log(index)
+      // adding active class for the text to make it disappear while swiping
+      for(let i = 0;i<mainText.length;i++) {
+          mainText[i].classList.remove('active');
+      }
+          mainText[0].classList.add('active');
+          mainText[2].classList.add('active');
+      // adding active class for the text to make it disappear while swiping end 
+          //styling the bullets   
       for(let j = 0; j < slide.length; j++) {
         slide[j].classList.remove('active')
       }
@@ -66,6 +75,15 @@ function toNext() {
     }
 
     if(index % 2 == 0) {
+      console.log(index)
+      // adding active class for the text to make it disappear while swiping
+      for(let i = 0;i<mainText.length;i++) {
+        mainText[i].classList.remove('active');
+    }
+        mainText[1].classList.add('active');
+        mainText[3].classList.add('active');
+    // adding active class for the text to make it disappear while swiping end  
+        //styling the bullets  
       for(let j = 0; j < slide.length; j++) {
         slide[j].classList.remove('active')
       }
@@ -79,9 +97,16 @@ function toPrev() {
     wrapper.style.transitionDuration = '1s'
     wrapper.style.transform = `translateX(${-slideWidth * index}px)`
 
-    //styling the bullets
-    
     if(index % 2 != 0) {
+      console.log(index)
+      // adding active class for the text to make it disappear while swiping
+      for(let i = 0;i<mainText.length;i++) {
+          mainText[i].classList.remove('active');
+      }
+          mainText[0].classList.add('active');
+          mainText[2].classList.add('active');
+      // adding active class for the text to make it disappear while swiping end 
+          //styling the bullets   
       for(let j = 0; j < slide.length; j++) {
         slide[j].classList.remove('active')
       }
@@ -89,6 +114,15 @@ function toPrev() {
     }
 
     if(index % 2 == 0) {
+      console.log(index)
+      // adding active class for the text to make it disappear while swiping
+      for(let i = 0;i<mainText.length;i++) {
+        mainText[i].classList.remove('active');
+    }
+        mainText[1].classList.add('active');
+        mainText[3].classList.add('active');
+    // adding active class for the text to make it disappear while swiping end  
+        //styling the bullets  
       for(let j = 0; j < slide.length; j++) {
         slide[j].classList.remove('active')
       }

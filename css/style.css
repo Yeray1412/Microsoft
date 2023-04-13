@@ -227,8 +227,6 @@ header .swiper-slide:first-child {
     position: relative;
 }
 
-
-
 header .swiper-slide .container {
     display: flex;
     align-items: center;
@@ -237,7 +235,10 @@ header .swiper-slide .container {
 
 header .swiper-slide .container .main {
     width: 400px;
-    transition: 0.3s;
+}
+
+header .swiper-slide .container .main.active {
+    opacity: 0;
 }
 
 header .swiper-slide .container .main button {
@@ -704,22 +705,22 @@ footer .container .sub-footer ul li:hover:not(li:last-child) {
     }
 
     header .swiper-slide:first-child {
-        background-image: url(../img/avifImg2.avif);
+        background-image: url(../img/avifimg.avif);
         height: calc(100vw - 76px)
     }
     
     header .swiper-slide:nth-child(2) {
-        background-image: url(../img/avifimg.avif);
-        height: calc(100vw - 76px)
-    }
-    
-    header .swiper-slide:nth-child(3) {
         background-image: url(../img/avifImg2.avif);
         height: calc(100vw - 76px)
     }
     
-    header .swiper-slide:last-child {
+    header .swiper-slide:nth-child(3) {
         background-image: url(../img/avifimg.avif);
+        height: calc(100vw - 76px)
+    }
+    
+    header .swiper-slide:last-child {
+        background-image: url(../img/avifImg2.avif);
         height: calc(100vw - 76px) !important;
     }
     
