@@ -10,10 +10,6 @@ const pauseStartIcon = document.querySelector('.pause-start-icon');
 let svgs = document.querySelectorAll('.pause-start-icon svg');
 let pause = document.querySelectorAll('.pause-start-icon svg')[0]
 let play = document.querySelectorAll('.pause-start-icon svg')[1]
-const styleObj = {
-  sl1: 'translateX(-1349px)',
-  sl2: 'translateX(-2698px)'
-}
 let swiperSlide = document.querySelectorAll('.swiper-slide');
 let index = 1;
 const firstClone = swiperSlide[0].cloneNode(true);
@@ -26,6 +22,11 @@ wrapper.append(firstClone);
 wrapper.prepend(secondClone);
 
 const slideWidth = swiperSlide[index].clientWidth;
+
+const styleObj = {
+  sl1: `translateX(${-slideWidth * 1}px)`,
+  sl2: `translateX(${-slideWidth * 2}px)`
+}
 
 wrapper.style.transform = `translateX(${-slideWidth * index}px)`
 
@@ -57,14 +58,14 @@ function toNext() {
     wrapper.style.transitionDuration = '1s'
     wrapper.style.transform = `translateX(${-slideWidth * index}px)`
     //styling the bullets
-    if(wrapper.style.transform == 'translateX(-1349px)' || wrapper.style.transform == 'translateX(-4047px)') {
+    if(index % 2 != 0) {
       for(let j = 0; j < slide.length; j++) {
         slide[j].classList.remove('active')
       }
       slide[0].classList.add('active');
     }
 
-    if(wrapper.style.transform == 'translateX(0px)' || wrapper.style.transform == 'translateX(-2698px)') {
+    if(index % 2 == 0) {
       for(let j = 0; j < slide.length; j++) {
         slide[j].classList.remove('active')
       }
@@ -80,14 +81,14 @@ function toPrev() {
 
     //styling the bullets
     
-    if(wrapper.style.transform == 'translateX(-1349px)' || wrapper.style.transform == 'translateX(-4047px)') {
+    if(index % 2 != 0) {
       for(let j = 0; j < slide.length; j++) {
         slide[j].classList.remove('active')
       }
       slide[0].classList.add('active');
     }
 
-    if(wrapper.style.transform == 'translateX(0px)' || wrapper.style.transform == 'translateX(-2698px)') {
+    if(index % 2 == 0) {
       for(let j = 0; j < slide.length; j++) {
         slide[j].classList.remove('active')
       }
@@ -176,19 +177,23 @@ backToTop.addEventListener('click', ()=> {
   })
 });
 
-window.addEventListener('scroll',()=> {
-  if(scrollY <= 1880) {
-    backToTop.classList.add('active')
-  } else {
-    backToTop.classList.remove('active')
-  }
+if(backToTop.clientWidth <= 130) {
+  window.addEventListener('scroll',()=> {
+    if(scrollY <= 1880) {
+      backToTop.classList.add('active')
+    } else {
+      backToTop.classList.remove('active')
+    }
+  
+    if(scrollY <= 446) {
+      backToTop.style.opacity = '0'
+    } else {
+      backToTop.style.opacity = '1'
+    }
+  })
+}
 
-  if(scrollY <= 446) {
-    backToTop.style.opacity = '0'
-  } else {
-    backToTop.style.opacity = '1'
-  }
-})
+
 
 // back to top end
 
@@ -205,7 +210,7 @@ searshIcon.addEventListener('click',()=> {
   rhs.classList.add('active');
   searshIcon.classList.add('active');
   searshCancel.classList.remove('d-none')
-  rhs.children[0].classList.add('d-none')
+  rhs.children[0].classList.remove('d-lg-block')
   rhs.children[2].classList.add('d-none')
   lhs.children[1].classList.add('d-lg-none')
   searshBar.style.width = '100%'
@@ -216,7 +221,7 @@ searshCancel.addEventListener('click',()=> {
     rhs.classList.remove('active');
     searshIcon.classList.remove('active');
     searshCancel.classList.add('d-none')
-    rhs.children[0].classList.remove('d-none')
+    rhs.children[0].classList.add('d-lg-block')
     rhs.children[2].classList.remove('d-none')
     lhs.children[1].classList.remove('d-lg-none')
     searshBar.style.width = ''
