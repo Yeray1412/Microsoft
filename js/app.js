@@ -59,14 +59,6 @@ function toNext() {
     wrapper.style.transitionDuration = '1s'
     wrapper.style.transform = `translateX(${-slideWidth * index}px)`
     if(index % 2 != 0) {
-      console.log(index)
-      // adding active class for the text to make it disappear while swiping
-      for(let i = 0;i<mainText.length;i++) {
-          mainText[i].classList.remove('active');
-      }
-          mainText[0].classList.add('active');
-          mainText[2].classList.add('active');
-      // adding active class for the text to make it disappear while swiping end 
           //styling the bullets   
       for(let j = 0; j < slide.length; j++) {
         slide[j].classList.remove('active')
@@ -75,14 +67,6 @@ function toNext() {
     }
 
     if(index % 2 == 0) {
-      console.log(index)
-      // adding active class for the text to make it disappear while swiping
-      for(let i = 0;i<mainText.length;i++) {
-        mainText[i].classList.remove('active');
-    }
-        mainText[1].classList.add('active');
-        mainText[3].classList.add('active');
-    // adding active class for the text to make it disappear while swiping end  
         //styling the bullets  
       for(let j = 0; j < slide.length; j++) {
         slide[j].classList.remove('active')
@@ -98,14 +82,6 @@ function toPrev() {
     wrapper.style.transform = `translateX(${-slideWidth * index}px)`
 
     if(index % 2 != 0) {
-      console.log(index)
-      // adding active class for the text to make it disappear while swiping
-      for(let i = 0;i<mainText.length;i++) {
-          mainText[i].classList.remove('active');
-      }
-          mainText[0].classList.add('active');
-          mainText[2].classList.add('active');
-      // adding active class for the text to make it disappear while swiping end 
           //styling the bullets   
       for(let j = 0; j < slide.length; j++) {
         slide[j].classList.remove('active')
@@ -114,14 +90,6 @@ function toPrev() {
     }
 
     if(index % 2 == 0) {
-      console.log(index)
-      // adding active class for the text to make it disappear while swiping
-      for(let i = 0;i<mainText.length;i++) {
-        mainText[i].classList.remove('active');
-    }
-        mainText[1].classList.add('active');
-        mainText[3].classList.add('active');
-    // adding active class for the text to make it disappear while swiping end  
         //styling the bullets  
       for(let j = 0; j < slide.length; j++) {
         slide[j].classList.remove('active')
@@ -235,6 +203,7 @@ if(backToTop.clientWidth <= 130) {
 const searshIcon = document.querySelector('.searsh-bar .icon');
 const searshText = document.querySelector('.searsh-bar input');
 const searshCancel = document.querySelector('.searsh-bar .cancel');
+const dropDownMobile = document.querySelector('.drop-down-mobile');
 const searshBar = document.querySelector('.searsh-bar');
 const rhs = document.querySelector('.rhs');
 const lhs = document.querySelector('.lhs');
@@ -247,6 +216,7 @@ searshIcon.addEventListener('click',()=> {
   rhs.children[0].classList.remove('d-lg-block')
   rhs.children[2].classList.add('d-none')
   lhs.children[1].classList.add('d-lg-none')
+  dropDownMobile.classList.add('d-none')
   searshBar.style.width = '100%'
 });
 
@@ -258,7 +228,66 @@ searshCancel.addEventListener('click',()=> {
     rhs.children[0].classList.add('d-lg-block')
     rhs.children[2].classList.remove('d-none')
     lhs.children[1].classList.remove('d-lg-none')
+    dropDownMobile.classList.remove('d-none')
     searshBar.style.width = ''
 });
 
 //searsh bar end
+
+// drop down click event
+const dropDown = document.querySelector('.drop-down');
+const dropDownContent = document.querySelector('.drop-down-content');
+const arr = [dropDown, dropDownMobile]
+
+  dropDown.addEventListener('click',()=> {
+    dropDownContent.style.zIndex = '100'
+    dropDownContent.style.opacity = '1'
+    dropDown.classList.add('active');
+  })
+
+  dropDownMobile.addEventListener('click',()=> {
+    let icons = dropDownMobile.children
+    if(icons[1].classList.contains('d-none')) {
+      console.log('aaa')
+      dropDownContent.style.zIndex = '100'
+      dropDownContent.style.opacity = '1'
+      for(const icon of icons) {
+        icon.classList.add('d-none');
+      }
+      icons[1].classList.remove('d-none');
+    } else {
+      console.log('assaa')
+      dropDownContent.style.zIndex = '-1'
+      dropDownContent.style.opacity = '0'
+      for(const icon of icons) {
+        icon.classList.add('d-none');
+      }
+      icons[0].classList.remove('d-none');
+    }
+  })
+// document.addEventListener('click',(e)=> {
+//   console.log( e.target != dropDownMobile)
+//   if(!e.target.classList.contains('pointer-spc') && e.target != dropDown) {
+//     dropDownContent.style.opacity = '0'
+//     dropDown.classList.remove('active');
+//   }
+// })
+
+// subDropDown 
+const lis = document.querySelectorAll('li.d-flex');
+
+for(const li of lis) {
+  li.addEventListener('click',()=> {
+    if(li.parentElement.clientHeight == 54) {
+      li.parentElement.style.height = '100%'
+    } else {
+      li.parentElement.style.height = ''
+    }
+  })
+}
+
+// subDropDown end
+
+// drop down click event end
+
+
