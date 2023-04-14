@@ -265,23 +265,31 @@ const arr = [dropDown, dropDownMobile]
       icons[0].classList.remove('d-none');
     }
   })
-// document.addEventListener('click',(e)=> {
-//   console.log( e.target != dropDownMobile)
-//   if(!e.target.classList.contains('pointer-spc') && e.target != dropDown) {
-//     dropDownContent.style.opacity = '0'
-//     dropDown.classList.remove('active');
-//   }
-// })
+
+if(document.documentElement.offsetWidth >= 996) {
+  document.addEventListener('click',(e)=> {
+    console.log( e.target != dropDownMobile)
+    if(!e.target.classList.contains('pointer-spc') && e.target != dropDown) {
+      dropDownContent.style.opacity = '0'
+      dropDown.classList.remove('active');
+    }
+  })
+}
+
+
 
 // subDropDown 
 const lis = document.querySelectorAll('li.d-flex');
+const lisArrow = document.querySelectorAll('li.d-flex span');
 
-for(const li of lis) {
-  li.addEventListener('click',()=> {
-    if(li.parentElement.clientHeight == 54) {
-      li.parentElement.style.height = '100%'
+for(let i = 0;i< lis.length; i++) {
+  lis[i].addEventListener('click',()=> {
+    if(lis[i].parentElement.clientHeight == 54) {
+      lis[i].parentElement.style.height = '100%'
+      lisArrow[i].style.transform = 'rotate(-90deg)'
     } else {
-      li.parentElement.style.height = ''
+      lis[i].parentElement.style.height = ''
+      lisArrow[i].style.transform = 'rotate(0deg)'
     }
   })
 }
